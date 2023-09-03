@@ -1,5 +1,5 @@
 import {TypeOrmModuleOptions} from '@nestjs/typeorm';
-import {User} from "../modules/demo/entities/User";
+import {User} from "@/modules/demo/entities/User";
 
 export default () =>
   ({

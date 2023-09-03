@@ -1,6 +1,6 @@
 import { Entity, UpdateDateColumn, CreateDateColumn, DeleteDateColumn, PrimaryColumn } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
-import { IUser } from "../../../../../shared_types/entities";
+import { IUser } from "@/shared_types/entities";
 @Entity('users')
 export class User implements IUser {
     @ApiProperty({ description: 'Unique identifier (workday)' })
