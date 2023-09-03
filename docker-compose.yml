@@ -1,0 +1,47 @@
+version: '3.9'
+
+networks:
+  bundle:
+    name: employee_app
+    driver: bridge
+
+services:
+  production:
+    container_name: application
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - bundle
+
+  mysql:
+      image: mysql:5.7
+      container_name: mysql
+      restart: unless-stopped
+      tty: true
+      ports:
+        - "3306:3306"
+      environment:
+        MYSQL_DATABASE: "database"
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_PASSWORD: "password"
+        MYSQL_USER: "user"
+      volumes:
+        - ./development/mysql:/var/lib/mysql
+      networks:
+        - bundle
+
+# DEV SMTP email service, great for testing, include nodemailer to use
+#
+#  mailhog:
+#    image: mailhog/mailhog:latest
+#    container_name: mailhog
+#    ports:
+#      - "1025:1025"
+#      - "8025:8025"
+#    networks:
+#      - bundle
