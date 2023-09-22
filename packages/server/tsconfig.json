@@ -27,7 +27,7 @@
     },
     "include": [
       "../shared_types/*.ts",
-      "src/*",
+      "src/**/*",
       "test/**/*"
     ]
   }
