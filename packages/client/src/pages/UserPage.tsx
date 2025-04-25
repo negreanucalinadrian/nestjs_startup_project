@@ -1,5 +1,9 @@
-import React from "react";
+import React from 'react';
 
 export default function UserPage(): React.JSX.Element {
-  return <>Welcome </>;
+    return (
+        <>
+            <div className={'text-red-600'}>This text should be red</div>
+        </>
+    );
 }

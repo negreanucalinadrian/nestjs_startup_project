@@ -7,7 +7,7 @@ export interface ApplicationState {
 }
 
 export default (set: SetState<AppState>, get: GetState<AppState>): ApplicationState => ({
-    isOktaLoading:true,
+    isOktaLoading: true,
     setIsOktaLoadingUser: (isLoading: boolean) => {
         set({ isOktaLoading: isLoading });
     },
