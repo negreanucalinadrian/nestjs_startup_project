@@ -1,5 +1,5 @@
 import {TypeOrmModuleOptions} from '@nestjs/typeorm';
-import {User} from "@/modules/demo/entities/User";
+import * as path from 'path';
 
 export default () =>
   ({
@@ -10,10 +10,13 @@ export default () =>
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
     connectTimeout: process.env.DB_CONNECTION_TIMEOUT,
-    entities: [User],
     synchronize: process.env.DB_SYNC === 'true',
     logging: process.env.DB_LOG === 'true',
-    subscribers: [],
-    min: process.env.DB_POOL_MIN_SIZE || 2,
-    max: process.env.DB_POOL_MAX_SIZE || 400,
+    autoLoadEntities: true,
+    pool: {
+      min: process.env.DB_POOL_MIN_SIZE || 2,
+      max: process.env.DB_POOL_MAX_SIZE || 400,
+    },
+    migrationsRun: true,
+    migrations: [path.resolve(__dirname, '../migrations/*.js')],
   } as TypeOrmModuleOptions);

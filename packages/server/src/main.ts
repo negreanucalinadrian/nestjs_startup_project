@@ -4,9 +4,11 @@ import { ConfigService } from '@nestjs/config';
 import { useContainer } from 'class-validator';
 import { ClassSerializerInterceptor, ValidationPipe } from '@nestjs/common';
 import { LogLevel } from '@nestjs/common/services/logger.service';
+import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
 
 async function bootstrap() {
-    const app = await NestFactory.create(AppModule);
+    const adaptor = new FastifyAdapter({ ignoreTrailingSlash: true });
+    const app = await NestFactory.create<NestFastifyApplication>(AppModule, adaptor);
     useContainer(app.select(AppModule), { fallbackOnErrors: true });
     app.enableCors();
     app.setGlobalPrefix('api');
