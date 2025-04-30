@@ -1,0 +1,29 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: nestjs_starter
+  title: NestJS starter
+  description: NestJS starter pack with React frontend as a monorepo
+  tags:
+    - react
+    - nestJS
+    - typescript
+    - nodejs
+    - fastify
+    - typeorm
+    - redis
+    - lerna
+    - swagger
+    - mysql
+    - jest
+    - supertest
+    - typeorm
+  annotations:
+    github.com/project-slug: 8x8/nestjs_startup_project
+    grafana/dashboard-selector: "tap"
+spec:
+  type: service
+  lifecycle: production
+  owner: platform-tap-tools
+  system: Platform
+
